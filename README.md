@@ -1,22 +1,20 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Awesome books: plain JavaScript with Objects
+# Awesome books: plain JavaScript refactoring to use JavaScript classes with Object
 
 In this project, I have built a basic website that allows users to add/remove books from a list. i have achieved that by using JavaScript objects and arrays. We also dynamically modified the DOM and add basic events.
-
-- Here is the page preview
 
 
 > Learning objectives
 
-- I understood different ways to create objects in JavaScript.
-- I created and accessed properties and methods of JavaScript objects.
+- To use JavaScript classes.
+- To understand Javascript class methods.
 
 ## Built With
 
 - HTML
 - CSS
-- VANILLA JAVASCRIPT
+- JAVASCRIPT
 
 ## Additional Tools
 
