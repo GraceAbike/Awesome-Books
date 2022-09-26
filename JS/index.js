@@ -6,53 +6,62 @@ const errorMsgEl = document.querySelector('.errorMsg');
 const form = document.querySelector('form');
 const bookList = JSON.parse(localStorage.getItem('bookList')) || [];
 
-const renderBooks = () => {
-  if (!bookList.length) {
-    libraryBooksEl.innerHTML = 'No books added';
-  } else {
-    let markup = '';
-    bookList.forEach((elem, index) => {
-      markup += `<div class="library-book" index=${index}>
-      <p class="book-title">${elem.title}</p>
-      <p class="book-author">${elem.author}</p>    
-      <button type="button" class="library-btn-rmv" id=${index}>Remove</button>
-  </div>`;
-    });
-    libraryBooksEl.innerHTML = markup;
+class Library {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
 
-  const removeBook = () => {
-    const removeBtnsEl = [...document.getElementsByClassName('library-btn-rmv')];
-    removeBtnsEl.forEach((item) => {
-      item.addEventListener('click', (e) => {
-        bookList.splice(e.target.id, 1);
+  addBook() {
+    addElBtn.addEventListener('click', () => {
+      const title = titleEl.value;
+      const author = authorEl.value;
+      if (title && author) {
+        const newBook = {
+          title,
+          author,
+        };
+        bookList.push(newBook);
         localStorage.setItem('bookList', JSON.stringify(bookList));
-        renderBooks();
-      });
+        this.renderBooks();
+        form.reset();
+        errorMsgEl.innerHTML = '';
+      } else {
+        errorMsgEl.innerHTML = 'Input something';
+      }
     });
-  };
-  removeBook();
-};
+  }
 
-const addBook = () => {
-  addElBtn.addEventListener('click', () => {
-    const title = titleEl.value;
-    const author = authorEl.value;
-    if (title && author) {
-      const newBook = {
-        title,
-        author,
-      };
-      bookList.push(newBook);
-      localStorage.setItem('bookList', JSON.stringify(bookList));
-      renderBooks();
-      form.reset();
-      errorMsgEl.innerHTML = '';
+  renderBooks() {
+    if (!bookList.length) {
+      libraryBooksEl.innerHTML = 'No books added';
     } else {
-      errorMsgEl.innerHTML = 'Input something';
+      let markup = '';
+      bookList.forEach((elem, index) => {
+        markup += `<div class="library-book" style="background-color: ${index % 2 && 'rgb(225, 223, 223)'}">
+        <p class="book-title">"${elem.title}"</p> <span> by </span>
+        <p class="book-author">${elem.author}</p>    
+        <button type="button" class="btn-rmv" id=${index}>Remove</button>
+    </div>`;
+      });
+      libraryBooksEl.innerHTML = markup;
     }
-  });
-};
 
-renderBooks();
-addBook();
+    const removeBook = () => {
+      const removeBtnsEl = [...document.getElementsByClassName('btn-rmv')];
+      removeBtnsEl.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          bookList.splice(e.target.id, 1);
+          localStorage.setItem('bookList', JSON.stringify(bookList));
+          this.renderBooks();
+        });
+      });
+    };
+    removeBook();
+  }
+}
+
+const awesomeBooks = new Library();
+
+awesomeBooks.addBook();
+awesomeBooks.renderBooks();
