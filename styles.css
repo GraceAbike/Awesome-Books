@@ -1,3 +1,8 @@
+@font-face {
+  font-family: balsamiq;
+  src: url(fonts/BalsamiqSans-Regular.ttf);
+  font-weight: bold;
+}
 
 *,
 *::before,
@@ -5,6 +10,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: balsamiq, sans-serif;
 }
 
 html {
@@ -12,18 +18,72 @@ html {
   overflow-x: hidden;
 }
 
+li {
+  list-style: none;
+}
+
+.flex-row {
+  display: flex;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
 }
 
-main {
-  margin-left: 1rem;
+.border {
+  border: 2.5px solid black;
 }
 
-.library {
+.center {
+  margin: 0 auto;
+}
+
+header {
+  top: 0.2rem;
+  left: 2.5vw;
+  right: 2.5vw;
+  position: fixed;
+}
+
+.bar-hero,
+footer {
+  justify-content: space-between;
+  width: 95vw;
+  padding: 0.5rem;
+}
+
+.nav {
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.list {
+  color: blue;
+}
+
+nav li + li {
+  border-left: 2px solid blue;
+  padding-left: 0.5rem;
+}
+
+.date {
+  width: max-content;
+  margin-left: auto;
+  margin-top: 0.2rem;
+}
+
+main {
+  margin-top: 5rem;
+}
+
+.awesome {
   margin: 1rem 0 2rem 0;
   text-align: center;
+}
+
+.list-books {
+  width: 90vw;
 }
 
 .library-book {
@@ -32,13 +92,6 @@ main {
   align-items: center;
   padding: 0.3rem;
   padding-right: 1rem;
-  border-bottom: 1px solid black;
-  padding-bottom: 0.5rem;
-}
-
-.library-books {
-  width: 90vw;
-  margin: 0 auto;
 }
 
 .book-title,
@@ -63,7 +116,9 @@ form button {
 form {
   width: 50vw;
   margin: 0 auto;
-  margin-top: 2.2rem;
+  margin-top: 8rem;
+  position: absolute;
+  visibility: hidden;
 }
 
 form * {
@@ -84,10 +139,48 @@ form h2 span {
   padding-top: 1rem;
 }
 
-.border {
-  border: 2.5px solid black;
-}
-
 .errorMsg {
   color: red;
+}
+
+.contact-inform {
+  display: grid;
+  position: absolute;
+  visibility: hidden;
+  width: 80vw;
+  margin-top: 10rem;
+  text-align: center;
+}
+
+.contact-inform h2 {
+  margin-bottom: 4rem;
+}
+
+.contact-inform p {
+  font-weight: bold;
+  color: #000;
+}
+
+.contact-inform ul li {
+  list-style: disc inside;
+  font-weight: bold;
+  margin: 2rem;
+  color: #000;
+}
+
+footer {
+  position: fixed;
+  bottom: 0.2rem;
+  left: 2.5vw;
+  right: 2.5vw;
+}
+
+.show {
+  position: static;
+  visibility: visible;
+}
+
+.hide {
+  position: absolute;
+  visibility: hidden;
 }
