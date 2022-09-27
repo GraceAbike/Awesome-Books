@@ -2,7 +2,7 @@ const listEl = document.querySelector('.list');
 const addnewEl = document.querySelector('.addnew');
 const contactEl = document.querySelector('.contact');
 const date = document.querySelector('.date');
-const booksListEl = document.querySelector('.awesome-book');
+const awesomeBookEl = document.querySelector('.awesome-book');
 const libraryBooksEl = document.querySelector('.list-books');
 const addElBtn = document.querySelector('.btn-add');
 const contactInformEl = document.querySelector('.contact-inform');
@@ -18,7 +18,7 @@ const toggleWindow = () => {
   listEl.addEventListener('click', () => {
     form.classList.remove('show');
     contactInformEl.classList.remove('show');
-    booksListEl.classList.remove('hide');
+    awesomeBookEl.classList.remove('hide');
     listEl.style.color = 'blue';
     addnewEl.style.color = 'black';
     contactEl.style.color = 'black';
@@ -27,7 +27,7 @@ const toggleWindow = () => {
   addnewEl.addEventListener('click', () => {
     form.classList.add('show');
     contactInformEl.classList.remove('show');
-    booksListEl.classList.add('hide');
+    awesomeBookEl.classList.add('hide');
     listEl.style.color = 'black';
     addnewEl.style.color = 'blue';
     contactEl.style.color = 'black';
@@ -36,7 +36,7 @@ const toggleWindow = () => {
   contactEl.addEventListener('click', () => {
     form.classList.remove('show');
     contactInformEl.classList.add('show');
-    booksListEl.classList.add('hide');
+    awesomeBookEl.classList.add('hide');
     listEl.style.color = 'black';
     addnewEl.style.color = 'black';
     contactEl.style.color = 'blue';
@@ -61,7 +61,7 @@ class Library {
           author,
         };
         bookList.push(newBook);
-        localStorage.setItem('book-List', JSON.stringify(bookList));
+        localStorage.setItem('bookList', JSON.stringify(bookList));
         this.renderBooks();
         form.reset();
         alertMessageEl.innerHTML = 'Book added successfully, <br> Check list.';
@@ -76,7 +76,7 @@ class Library {
     });
   }
 
-  awesomeBooks() {
+  renderBooks() {
     if (!bookList.length) {
       libraryBooksEl.innerHTML = 'No books added';
     } else {
@@ -97,7 +97,7 @@ class Library {
         item.addEventListener('click', (e) => {
           bookList.splice(e.target.id, 1);
           localStorage.setItem('bookList', JSON.stringify(bookList));
-          this.awesomeBooks();
+          this.renderBooks();
         });
       });
     };
@@ -107,5 +107,5 @@ class Library {
 const awesomeBooks = new Library();
 
 awesomeBooks.addBook();
-awesomeBooks.awesomeBooks();
+awesomeBooks.renderBooks();
 toggleWindow();
