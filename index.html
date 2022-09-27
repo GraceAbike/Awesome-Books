@@ -8,19 +8,48 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
+		<header>
+			<nav class="bar-hero center border flex-row">
+				<h3 class="icon">Awesome Books</h3>
+				<ul class="nav flex-row">
+					<li class="list">List</li>
+					<li class="addnew">Add new</li>
+					<li class="contact">Contact</li>
+				</ul>
+			</nav>
+			<p class="date"></p>
+		</header>
 		<main>
-			<h1 class="library">All awesome books</h1>
-			<section class="library-books border"></section>
+			<section class="awesome-book">
+				<h1 class="awesome">All awesome books</h1>
+				<section class="list-books border center"></section>
+			</section>
+			<section class="contact-inform center">
+				<h2>Contact Information</h2>
+				<p>
+					Do you have any questions or you just want to say "Hello"?<br>You can reach out to us!
+				</p>
+				<ul class="contact-list">
+					<li>My e-mail: mara234216@gmail.com</li>
+					<li>My phone number: +393512274001</li>
+					<li>My address: piemonte Torino Italy.</li>
+			  </ul>
+				<a href="https://github.com/GraceAbike">Grace Abike</a>
+			</section>
 			<form action="#">
 				<h2>A<span>dd a new </span>book</h2>
 				<input type="text" id="title" placeholder="Title" class="border" required>
 				<br>
 				<input type="text" id="author" placeholder="Author" class="border" required>
-        <br>
-				<button src="#" type="button" class="btn-add">Add</button>
-        <p class="errorMsg"></p>
+				<br>
+				<button type="button" class="btn-add">Add</button>
+				<p class="alertMessage"></p>
 			</form>
 		</main>
+		<footer class="center border flex-row">
+			<p>Microverse</p>
+			<p>&copy; some rights reserverd</p>
+		</footer>
 		<script src="/JS/index.js"></script>
 	</body>
 </html>
